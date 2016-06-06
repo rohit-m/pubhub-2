@@ -102,10 +102,10 @@ function showUser(str) {
     console.log(str);
     //console.log(truexmlhttp.send());
     // Need full URL to page, since this HTML page is not on a server
-    xmlhttp.open("GET","http://test.dev/getcars.php?q="+str);
+    xmlhttp.open("GET","http://test.dev/querygen.php?q="+str);
     xmlhttp.send();
 }
 // Start the CORS on startup
-var url = "http://test.dev/getcars.php";
+var url = "http://test.dev/querygen.php";
 var method = "GET";
 createCORSRequest(method, url);
