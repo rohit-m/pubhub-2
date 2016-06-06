@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING from Cordova: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title></title>
+    <style type="text/css">
+        .buttonClass, h2, p, .inputClass, #output, td, select {
+            font-family: "Helvetica"; color: #000; font-size:1em;
+        }
+        h2 {
+            font-size:1.3em; font-weight: bold;
+        }
+        .buttonClass, .inputClass, #output, .buttonDel, select {
+            border-radius:8px;
+            border:#878787 solid 1px; padding:.5em 1em;margin:.5em;
+            -webkit-appearance:none;
+        }
+        .buttonClass, .inputClass, #output {
+            width: 46%;
+        }
+        .buttonClass {
+            text-align: center; height: 3em; background-color:#fff;
+        }
+        .select {
+            text-align: center; height: 9em; background-color:#fff; line-height: 3em;
+        }
+        .inputClass {
+            text-align: left; height: 2em; background-color:#ffe; width:90%;
+        }
+        .segment {
+            display:block; border-radius:8px; background-color:#eee;
+            border:#878787 solid 1px; padding:1em; margin:.5em;
+            -webkit-appearance:none;
+            height: auto;
+        }
+        table {
+            width:100%;
+        }
+        td {
+            font-size:.8em;
+            padding: .5em;
+            width:25%;
+            border:1px gray solid;
+            overflow:auto;
+            border-radius: 4px;
+            background-color: #fff;
+            height:2em;
+        }
+        @media screen and (max-width:800px) {
+            .buttonClass { width: 100%;}
+        }</style></head>
+
+<body>
+<input type="button" class="buttonClass" onclick='window.location="index.html"' value="Return">
+<div class="segment">
+    <h2>Serving Data from External Server</h2>
+    <form action="" method="GET" id="formPowerType">
+        <select name="users" onchange="showUser(this.value)">
+            <option value="">Select power type</option>
+            <option value="1">Id 1</option>
+            <option value="2">Id 2</option>
+        </select>
+        <!-- <br><input type="button" id="button" class="buttonClass" value="GO" onSubmit="return showUser(this.form)"> -->
+    </form>
+    <br>
+    <div id="txtHint">(Data will be displayed here)</div>
+    <input type="button" class="buttonClass" onclick='window.location="https://iphonedevlog.wordpress.com/2014/03/28/populate-your-phonegap-app-with-data-from-an-external-server-db/"' value="View code on iPhoneDevLog">
+</div>
+<script>
+    // --------------------------- CORS begin
+    // Create the XHR object.
+    function createCORSRequest(method, url) {
+        var xhr = new XMLHttpRequest();
+        if ("withCredentials" in xhr) {
+// XHR for Chrome/Firefox/Opera/Safari.
+            xhr.open(method, url, true);
+            console.log('withCredentials');
+        } else if (typeof XDomainRequest != "undefined") {
+// XDomainRequest for IE.
+            xhr = new XDomainRequest();
+            xhr.open(method, url);
+        } else {
+// CORS not supported.
+            xhr = null;
+        }
+        return xhr;
+    }
+    function makeCorsRequest() {
+        var xhr = createCORSRequest('GET', url);
+        if (!xhr) {
+            alert('CORS not supported');
+            return;
+        }
+        xhr.onload = function() {
+            console.log("onloadn");
+        }
+        xhr.onerror = function() {
+            alert('Error accessing database.');
+        };
+        xhr.send();
+    }
+    // --------------------------- CORS end
+    function showUser(str) {
+        var xmlhttp = new XMLHttpRequest();
+        if (str=="") {
+            document.getElementById("txtHint").innerHTML = "Please make a selection.";
+            return;
+        }
+        document.getElementById("txtHint").innerHTML = "Getting data ...";
+
+        xmlhttp.onreadystatechange=function() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                var txt = xmlhttp.responseText;
+                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+            }
+        }
+        console.log(str);
+        //console.log(truexmlhttp.send());
+        // Need full URL to page, since this HTML page is not on a server
+        xmlhttp.open("GET","http://test.dev/getcars.php?q="+str);
+        xmlhttp.send();
+    }
+    // Start the CORS on startup
+    var url = "http://test.dev/getcars.php";
+    var method = "GET";
+    createCORSRequest(method, url);
+</script>
+</body>
+</html>
