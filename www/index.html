@@ -17,7 +17,23 @@
         <a id="search" href="#" class="btn -circle -to-square -beer"></a>
     </div>
     <div id="listing-panel" class="panel-listing panel">
-
+        <div class="filters">
+            <form id="filters">
+                <select id="type_of_pub">
+                    <option value="watch_the_football">Watch the football</option>
+                    <option value="datenight">Datenight</option>
+                    <option value="quiet_night_with_friends">Quiet night with friends</option>
+                    <option value="dance_floor">Lets dance</option>
+                </select>
+                <input type="checkbox" id="serves_food" value="serves_food">Serves Food
+                <select id="budget">
+                    <option value="low">£</option>
+                    <option value="med">££</option>
+                    <option value="high">£££</option>
+                </select>
+                <button type='submit' value="go"></button>
+            </form>
+        </div>
     </div>
 </div>
 <script type="text/javascript" src="js/libs/jquery.min.js"></script>

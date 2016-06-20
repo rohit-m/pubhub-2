@@ -50,15 +50,14 @@ $(document).on('click', '#search', function (e) {
     //Get the listings
     $.getJSON("/test-json/test-data.json", function (data) {
 
+        /*TODO: Filters to work - Get data according to filters - When initially getting data use current location*/
+
         var items = [];
         $.each(data, function (key, val) {
             items.push(val)
         });
 
-        console.log(items);
-
         $.each(items, function (count){
-            console.log(count);
             var card = 
                 "<div class='card' style='-webkit-transform: translateZ(0);'>" +
                     "<div class='-close'></div>" +
