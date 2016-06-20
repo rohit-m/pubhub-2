@@ -18,94 +18,146 @@
  */
 var app = {
     // Application Constructor
-    initialize: function() {
+    initialize: function () {
         this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
+    bindEvents: function () {
+        //The line below is default
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.getElementById('qg_submit').addEventListener('click', generateQuery);
     },
     // deviceready Event Handler
-    //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
+    receivedEvent: function (id) {
         console.log('Received Event: ' + id);
     }
 };
 
 app.initialize();
 
-function generateQuery(e) {
-    e.preventDefault();
-    var query = null;
-    var $options = document.getElementsByClassName('qg');
+//When you click search
+$(document).on('click', '#search', function (e) {
+    $('#listing-panel').toggleClass('active');
 
-    for(var i = 0; i < $options.length; i++) {
-        query = query + "&"+ $options[i].id + "=" + $options[i].value;
+    //Get the listings
+    $.getJSON("/test-json/test-data.json", function (data) {
+
+        var items = [];
+        $.each(data, function (key, val) {
+            items.push(val)
+        });
+
+        console.log(items);
+
+        $.each(items, function (count){
+            console.log(count);
+            var card = 
+                "<div class='card' style='-webkit-transform: translateZ(0);'>" +
+                    "<div class='-close'></div>" +
+                    "<div class='-thumbnail bg-cover-center'></div>" +
+                    "<div class='meta'>" +
+                        "<div class='-distance'>5 <span class='measure'>mins</span></div>" +
+                        "<div class='-name'>"+ items[count]['name'] +"</div>" +
+                        "<div class='-tags'>"+ items[count]['pubType'] +"</div>" +
+                        "<div class='-share'></div>" +
+                    "</div>" +
+                    "<div class='offers-list list padding-small'><h3>Offers</h3><ul class='offer-list-ul'><li>STATIC ITEM</li><li>STATIC ITEM</li></ul></div>" +
+                        "<div class='desc padding-small'>" +
+                            "<p>Lorem ipsum dolor sit amet, ad cibo inermis efficiendi sit, te vim maluisset gubergren, nullam adipisci ei nam. Has te causae minimum scribentur, vis an nonumes invidunt. Cum nonumy nostrum te.</p>" +
+                        "</div>" +
+                        "<div class='tag-list list padding-small'><h3>Tags</h3>" +
+                            "<ul class='tag-list-ul'><li>STATIC ITEM</li><li>STATIC ITEM</li></ul>" +
+                        "</div>" +
+                        "<div class='map'>" +
+                            "<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158857.72810669043!2d-0.24168143192880728!3d51.52877184087034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon!5e0!3m2!1sen!2suk!4v1465925146219' frameborder='0' allowfullscreen></iframe>" +
+                        "</div>" +
+                        "<div class='desc padding-small'>" +
+                            "<p>Something here</p>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>";
+            $('#listing-panel').append(card);
+        });
+    });
+});
+
+$(document).on('click', '.card', function (e) {
+    $(this).addClass('active');
+    if (e.target.className == "-close") {
+        $(this).removeClass('active');
     }
+});
 
-    showUser(query);
-}
-
-function createCORSRequest(method, url) {
-    var xhr = new XMLHttpRequest();
-    if ("withCredentials" in xhr) {
-        // XHR for Chrome/Firefox/Opera/Safari.
-        xhr.open(method, url, true);
-        console.log('withCredentials');
-    } else if (typeof XDomainRequest != "undefined") {
-        // XDomainRequest for IE.
-        xhr = new XDomainRequest();
-        xhr.open(method, url);
-    } else {
-        // CORS not supported.
-        xhr = null;
-    }
-    return xhr;
-}
-function makeCorsRequest() {
-    var xhr = createCORSRequest('GET', url);
-    if (!xhr) {
-        alert('CORS not supported');
-        return;
-    }
-    xhr.onload = function() {
-        console.log("onloadn");
-    };
-    xhr.onerror = function() {
-        alert('Error accessing database.');
-    };
-    xhr.send();
-}
-
-function showUser(str) {
-    console.log(str);
-    var xmlhttp = new XMLHttpRequest();
-
-    document.getElementById("result").innerHTML = "Getting data ...";
-
-    xmlhttp.onreadystatechange=function() {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-            var txt = xmlhttp.responseText;
-            document.getElementById("result").innerHTML = xmlhttp.responseText;
-        }
-    };
-    console.log(str);
-    //console.log(truexmlhttp.send());
-    // Need full URL to page, since this HTML page is not on a server
-    xmlhttp.open("GET","http://test.dev/querygen.php?q="+str);
-    xmlhttp.send();
-}
-// Start the CORS on startup
-var url = "http://test.dev/querygen.php";
-var method = "GET";
-createCORSRequest(method, url);
+//function generateQuery(e) {
+//    e.preventDefault();
+//    var query = null;
+//    var $options = document.getElementsByClassName('qg');
+//
+//    for(var i = 0; i < $options.length; i++) {
+//        query = query + "&"+ $options[i].id + "=" + $options[i].value;
+//    }
+//
+//    showUser(query);
+//}
+//
+//function createCORSRequest(method, url) {
+//    var xhr = new XMLHttpRequest();
+//    if ("withCredentials" in xhr) {
+//        // XHR for Chrome/Firefox/Opera/Safari.
+//        xhr.open(method, url, true);
+//        console.log('withCredentials');
+//    } else if (typeof XDomainRequest != "undefined") {
+//        // XDomainRequest for IE.
+//        xhr = new XDomainRequest();
+//        xhr.open(method, url);
+//    } else {
+//        // CORS not supported.
+//        xhr = null;
+//    }
+//    return xhr;
+//}
+//function makeCorsRequest() {
+//    var xhr = createCORSRequest('GET', url);
+//    if (!xhr) {
+//        alert('CORS not supported');
+//        return;
+//    }
+//    xhr.onload = function() {
+//        console.log("onloadn");
+//    };
+//    xhr.onerror = function() {
+//        alert('Error accessing database.');
+//    };
+//    xhr.send();
+//}
+//
+//function showUser(str) {
+//    console.log(str);
+//    var xmlhttp = new XMLHttpRequest();
+//
+//    document.getElementById("result").innerHTML = "Getting data ...";
+//
+//    xmlhttp.onreadystatechange=function() {
+//        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+//            var txt = xmlhttp.responseText;
+//            document.getElementById("result").innerHTML = xmlhttp.responseText;
+//        }
+//    };
+//    console.log(str);
+//    //console.log(truexmlhttp.send());
+//    // Need full URL to page, since this HTML page is not on a server
+//    xmlhttp.open("GET","http://test.dev/querygen.php?q="+str);
+//    xmlhttp.send();
+//}
+//// Start the CORS on startup
+//var url = "http://test.dev/querygen.php";
+//var method = "GET";
+//createCORSRequest(method, url);

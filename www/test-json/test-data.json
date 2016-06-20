@@ -1,0 +1,85 @@
+[{
+  "id": 1,
+  "name": "Corbetts",
+  "pubAddress": {
+    "id": 1,
+    "addressLineOne": "some building number",
+    "addressLineTwo": "some street name",
+    "country": "ENGLAND",
+    "postCode": "NA",
+    "townCity": "some town or city"
+  },
+  "pubType": "WATCH_THE_FOOTBALL"
+}, {
+  "id": 2,
+  "name": "McManus's",
+  "pubAddress": {
+    "id": 1,
+    "addressLineOne": "some building number",
+    "addressLineTwo": "some street name",
+    "country": "ENGLAND",
+    "postCode": "NA",
+    "townCity": "some town or city"
+  },
+  "pubType": "AFTER_WORK_DRINKS"
+}, {
+  "id": 3,
+  "name": "The Spirit Store",
+  "pubAddress": {
+    "id": 1,
+    "addressLineOne": "some building number",
+    "addressLineTwo": "some street name",
+    "country": "ENGLAND",
+    "postCode": "NA",
+    "townCity": "some town or city"
+  },
+  "pubType": "AFTER_WORK_DRINKS"
+}, {
+  "id": 4,
+  "name": "Courtneys",
+  "pubAddress": {
+    "id": 1,
+    "addressLineOne": "some building number",
+    "addressLineTwo": "some street name",
+    "country": "ENGLAND",
+    "postCode": "NA",
+    "townCity": "some town or city"
+  },
+  "pubType": "DATE_NIGHT"
+}, {
+  "id": 5,
+  "name": "Pepper Saint Ontiod",
+  "pubAddress": {
+    "id": 1,
+    "addressLineOne": "some building number",
+    "addressLineTwo": "some street name",
+    "country": "ENGLAND",
+    "postCode": "NA",
+    "townCity": "some town or city"
+  },
+  "pubType": "AFTER_WORK_DRINKS"
+}, {
+  "id": 6,
+  "name": "The Alexandra",
+  "pubAddress": {
+    "id": 1,
+    "addressLineOne": "some building number",
+    "addressLineTwo": "some street name",
+    "country": "ENGLAND",
+    "postCode": "NA",
+    "townCity": "some town or city"
+  },
+  "pubType": "WATCH_THE_FOOTBALL"
+}, {
+  "id": 7,
+  "name": "Waxy O'Connors",
+  "pubAddress": {
+    "id": 1,
+    "addressLineOne": "some building number",
+    "addressLineTwo": "some street name",
+    "country": "ENGLAND",
+    "postCode": "NA",
+    "townCity": "some town or city"
+  },
+  "pubType": "WATCH_THE_FOOTBALL"
+}]
