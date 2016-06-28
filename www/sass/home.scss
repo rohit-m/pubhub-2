@@ -1,273 +1,273 @@
-body {
-  background-color:#FFF;
-  //max-width:320px;
-  margin:0 auto;
-  font-family: 'Roboto', sans-serif;
-  font-size:13px;
-
-  .container {
-    overflow:hidden;
-  }
-
-  ul {
-    list-style:none;
-    padding:0;
-  }
-}
-
-.panel {
-  text-align:center;
-  height:100vh;
-  padding:20px;
-
-  &.panel-home {
-    display:block;
-    background-color:#E53B51;
-    animation-duration: 2s;
-    animation-name: drawpanel;
-    z-index:1;
-    height:0;
-    -webkit-animation-fill-mode:forwards;
-    -moz-animation-fill-mode:forwards;
-    -o-animation-fill-mode:forwards;
-    -ms-animation-fill-mode:forwards;
-    animation-fill-mode:forwards;
-  }
-
-  &.panel-listing {
-    z-index:1;
-    padding-left:0;
-    padding-right:0;
-    background-color:#73726D;
-    display:block;
-    -webkit-transform:translate(120%,-100%);
-    transform:translate(120%,-100%);
-    -webkit-box-shadow: 0px 0px 53px 6px rgba(0,0,0,0.76);
-    -moz-box-shadow: 0px 0px 53px 6px rgba(0,0,0,0.76);
-    box-shadow: 0px 0px 53px 6px rgba(0,0,0,0.76);
-    overflow:scroll;
-
-    &.active {
-      -webkit-animation-fill-mode:forwards;
-      -moz-animation-fill-mode:forwards;
-      -o-animation-fill-mode:forwards;
-      -ms-animation-fill-mode:forwards;
-      animation-fill-mode:forwards;
-      animation-duration: 1s;
-      animation-name: panel-right-to-left;
-
-      .card {
-        animation-name: card-bottom-to-top;
-        animation-duration: 2s;
-        -webkit-animation-delay: 1s;
-        animation-delay: 1s;
-        transition:width 0.3s ease-out, max-height 1.6s ease-out;
-        -webkit-transition:width 0.3s ease-out, max-height 1.6s ease-out;
-
-        &.active {
-          opacity:1;
-          -webkit-transform:translateY(0%);
-          transform:translateY(0%);
-          max-height:2500px;
-          width:100%;
-
-          .-thumbnail {
-            padding:140px;
-          }
-        }
-      }
-    }
-  }
-}
-
-.card {
-  background:#FFF;
-  border-radius:10px;
-  width:90%;
-  margin-left:auto;
-  margin-right:auto;
-  max-height:200px;
-  overflow:hidden;
-  position:relative;
-  margin-bottom:15px;
-  -webkit-transform:translateY(200%);
-  transform:translateY(200%);
-  opacity:0;
-  -webkit-box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.76);
-  -moz-box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.76);
-  box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.76);
-
-  -webkit-animation-fill-mode:forwards;
-  -moz-animation-fill-mode:forwards;
-  -o-animation-fill-mode:forwards;
-  -ms-animation-fill-mode:forwards;
-  animation-fill-mode:forwards;
-  position: relative;
-
-  .-close {
-    opacity:0;
-    transition:all 0.3s ease-out;
-    -webkit-transition:all 0.3s ease-out;
-    padding:20px 0;
-    background:#E53B51;
-    position:absolute;
-    top:-100px;
-    width:100%;
-
-    &:after {
-      content:"\f404";
-      font-family:"ionicons";
-      font-size:25px;
-      color:#FFF;
-    }
-  }
-
-  .-thumbnail {
-    background-image:url('http://www.theadventuresofrohitmohan.com/img/card_placeholder_280x140.jpg');
-    padding:60px;
-  }
-
-  .meta {
-    padding-left:70px;
-    text-align:left;
-    padding-top:10px;
-    padding-right:15px;
-    margin-bottom:35px;
-    .-distance {
-      position:absolute;
-      text-align:center;
-      left:15px;
-      font-size:30px;
-      color:#E53B51;
-      .measure {
-        display:block;
-        font-size:15px;
-      }
-    }
-    .-name {
-      padding-top:7px;
-      color:#404040;
-    }
-    .-tags {
-      color:#83808a;
-      margin-top:5px;
-      font-size:8px;
-      text-transform:uppercase;
-      letter-spacing:0.1em;
-    }
-  }
-
-  .list {
-    background-color:#f3f3f3;
-  }
-
-  .desc {
-    text-align: left;
-    line-height: 1.5em;
-    letter-spacing: 0.12em;
-    font-weight: 100;
-  }
-
-  .map {
-    width:300px;
-    height:300px;
-
-    iframe {
-      height:100%;
-      width:100%;
-    }
-  }
-
-  &.active {
-    .-close {
-      opacity:1;
-      top:0;
-    }
-  }
-}
-
-.btn {
-  background:#FFF;
-  text-transform:uppercase;
-  color:#333333;
-  display:inline-block;
-
-  &.-beer {
-    margin:0 auto;
-    text-decoration:none;
-    -webkit-transform:translateY(-50%);
-    transform:translateY(-50%);
-    position:relative;
-    top:50%;
-    padding:60px;
-    width:65px;
-    height:65px;
-    border-radius:100%;
-    opacity:0;
-    -webkit-animation-fill-mode:forwards;
-    -moz-animation-fill-mode:forwards;
-    -o-animation-fill-mode:forwards;
-    -ms-animation-fill-mode:forwards;
-    animation-fill-mode:forwards;
-    animation-name: appear;
-    animation-duration: 2s;
-    -webkit-animation-delay: 1.8s;
-    animation-delay: 1.8s;
-    &:before {
-      font-size:70px;
-      content:"\f368";
-      font-family:"ionicons";
-    }
-  }
-}
-
-.bg-cover {
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-}
-
-.list {
-  li {
-    font-size:12px;
-    letter-spacing:0.15em;
-    padding:20px;
-  }
-}
-
-@keyframes drawpanel {
-  from {
-    height:0vh;
-  }
-  to {
-    height:100vh;
-  }
-}
-
-@keyframes appear {
-  from {
-    opacity:0;
-  }
-  to {
-    opacity:1;
-  }
-}
-
-@keyframes panel-right-to-left {
-  to {
-    -webkit-transform:translate(0%,-100%);
-    transform:translate(0%,-100%);
-  }
-}
-
-@keyframes card-bottom-to-top {
-  to {
-    -webkit-transform:translateY(0);
-    transform:translateY(0);
-    opacity:1;
-  }
-}
-
-.padding-small {
-  padding:20px;
-}
+//body {
+//  background-color:#FFF;
+//  //max-width:320px;
+//  margin:0 auto;
+//  font-family: 'Roboto', sans-serif;
+//  font-size:13px;
+//
+//  .container {
+//    overflow:hidden;
+//  }
+//
+//  ul {
+//    list-style:none;
+//    padding:0;
+//  }
+//}
+//
+//.panel {
+//  text-align:center;
+//  height:100vh;
+//  padding:20px;
+//
+//  &.panel-home {
+//    display:block;
+//    background-color:#E53B51;
+//    animation-duration: 2s;
+//    animation-name: drawpanel;
+//    z-index:1;
+//    height:0;
+//    -webkit-animation-fill-mode:forwards;
+//    -moz-animation-fill-mode:forwards;
+//    -o-animation-fill-mode:forwards;
+//    -ms-animation-fill-mode:forwards;
+//    animation-fill-mode:forwards;
+//  }
+//
+//  &.panel-listing {
+//    z-index:1;
+//    padding-left:0;
+//    padding-right:0;
+//    background-color:#73726D;
+//    display:block;
+//    -webkit-transform:translate(120%,-100%);
+//    transform:translate(120%,-100%);
+//    -webkit-box-shadow: 0px 0px 53px 6px rgba(0,0,0,0.76);
+//    -moz-box-shadow: 0px 0px 53px 6px rgba(0,0,0,0.76);
+//    box-shadow: 0px 0px 53px 6px rgba(0,0,0,0.76);
+//    overflow:scroll;
+//
+//    &.active {
+//      -webkit-animation-fill-mode:forwards;
+//      -moz-animation-fill-mode:forwards;
+//      -o-animation-fill-mode:forwards;
+//      -ms-animation-fill-mode:forwards;
+//      animation-fill-mode:forwards;
+//      animation-duration: 1s;
+//      animation-name: panel-right-to-left;
+//
+//      .card {
+//        animation-name: card-bottom-to-top;
+//        animation-duration: 2s;
+//        -webkit-animation-delay: 1s;
+//        animation-delay: 1s;
+//        transition:width 0.3s ease-out, max-height 1.6s ease-out;
+//        -webkit-transition:width 0.3s ease-out, max-height 1.6s ease-out;
+//
+//        &.active {
+//          opacity:1;
+//          -webkit-transform:translateY(0%);
+//          transform:translateY(0%);
+//          max-height:2500px;
+//          width:100%;
+//
+//          .-thumbnail {
+//            padding:140px;
+//          }
+//        }
+//      }
+//    }
+//  }
+//}
+//
+//.card {
+//  background:#FFF;
+//  border-radius:10px;
+//  width:90%;
+//  margin-left:auto;
+//  margin-right:auto;
+//  max-height:200px;
+//  overflow:hidden;
+//  position:relative;
+//  margin-bottom:15px;
+//  -webkit-transform:translateY(200%);
+//  transform:translateY(200%);
+//  opacity:0;
+//  -webkit-box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.76);
+//  -moz-box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.76);
+//  box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.76);
+//
+//  -webkit-animation-fill-mode:forwards;
+//  -moz-animation-fill-mode:forwards;
+//  -o-animation-fill-mode:forwards;
+//  -ms-animation-fill-mode:forwards;
+//  animation-fill-mode:forwards;
+//  position: relative;
+//
+//  .-close {
+//    opacity:0;
+//    transition:all 0.3s ease-out;
+//    -webkit-transition:all 0.3s ease-out;
+//    padding:20px 0;
+//    background:#E53B51;
+//    position:absolute;
+//    top:-100px;
+//    width:100%;
+//
+//    &:after {
+//      content:"\f404";
+//      font-family:"ionicons";
+//      font-size:25px;
+//      color:#FFF;
+//    }
+//  }
+//
+//  .-thumbnail {
+//    background-image:url('http://www.theadventuresofrohitmohan.com/img/card_placeholder_280x140.jpg');
+//    padding:60px;
+//  }
+//
+//  .meta {
+//    padding-left:70px;
+//    text-align:left;
+//    padding-top:10px;
+//    padding-right:15px;
+//    margin-bottom:35px;
+//    .-distance {
+//      position:absolute;
+//      text-align:center;
+//      left:15px;
+//      font-size:30px;
+//      color:#E53B51;
+//      .measure {
+//        display:block;
+//        font-size:15px;
+//      }
+//    }
+//    .-name {
+//      padding-top:7px;
+//      color:#404040;
+//    }
+//    .-tags {
+//      color:#83808a;
+//      margin-top:5px;
+//      font-size:8px;
+//      text-transform:uppercase;
+//      letter-spacing:0.1em;
+//    }
+//  }
+//
+//  .list {
+//    background-color:#f3f3f3;
+//  }
+//
+//  .desc {
+//    text-align: left;
+//    line-height: 1.5em;
+//    letter-spacing: 0.12em;
+//    font-weight: 100;
+//  }
+//
+//  .map {
+//    width:300px;
+//    height:300px;
+//
+//    iframe {
+//      height:100%;
+//      width:100%;
+//    }
+//  }
+//
+//  &.active {
+//    .-close {
+//      opacity:1;
+//      top:0;
+//    }
+//  }
+//}
+//
+//.btn {
+//  background:#FFF;
+//  text-transform:uppercase;
+//  color:#333333;
+//  display:inline-block;
+//
+//  &.-beer {
+//    margin:0 auto;
+//    text-decoration:none;
+//    -webkit-transform:translateY(-50%);
+//    transform:translateY(-50%);
+//    position:relative;
+//    top:50%;
+//    padding:60px;
+//    width:65px;
+//    height:65px;
+//    border-radius:100%;
+//    opacity:0;
+//    -webkit-animation-fill-mode:forwards;
+//    -moz-animation-fill-mode:forwards;
+//    -o-animation-fill-mode:forwards;
+//    -ms-animation-fill-mode:forwards;
+//    animation-fill-mode:forwards;
+//    animation-name: appear;
+//    animation-duration: 2s;
+//    -webkit-animation-delay: 1.8s;
+//    animation-delay: 1.8s;
+//    &:before {
+//      font-size:70px;
+//      content:"\f368";
+//      font-family:"ionicons";
+//    }
+//  }
+//}
+//
+//.bg-cover {
+//  background-size:cover;
+//  background-position:center;
+//  background-repeat:no-repeat;
+//}
+//
+//.list {
+//  li {
+//    font-size:12px;
+//    letter-spacing:0.15em;
+//    padding:20px;
+//  }
+//}
+//
+//@keyframes drawpanel {
+//  from {
+//    height:0vh;
+//  }
+//  to {
+//    height:100vh;
+//  }
+//}
+//
+//@keyframes appear {
+//  from {
+//    opacity:0;
+//  }
+//  to {
+//    opacity:1;
+//  }
+//}
+//
+//@keyframes panel-right-to-left {
+//  to {
+//    -webkit-transform:translate(0%,-100%);
+//    transform:translate(0%,-100%);
+//  }
+//}
+//
+//@keyframes card-bottom-to-top {
+//  to {
+//    -webkit-transform:translateY(0);
+//    transform:translateY(0);
+//    opacity:1;
+//  }
+//}
+//
+//.padding-small {
+//  padding:20px;
+//}

@@ -44,21 +44,48 @@ var app = {
 app.initialize();
 
 //When you click search
-$(document).on('click', '#search', function (e) {
+$(document).on('submit', '#filters', function (e) {
+    var form_values = $(this).serializeArray();
+    var pub_budget, pub_type, form_data;
+    e.preventDefault();
+
+    //console.log(form_values);
+
+    for(var key in form_values) {
+        var obj = form_values[key];
+
+        switch(obj['name']) {
+            case 'pub_type':
+                pub_type = obj['value'];
+                break;
+            case 'pub_budget':
+                pub_budget = obj['value'];
+                break;
+        }
+    }
+
     $('#listing-panel').toggleClass('active');
 
     //Get the listings
     $.getJSON("/test-json/test-data.json", function (data) {
 
-        /*TODO: Filters to work - Get data according to filters - When initially getting data use current location*/
-
+        /*TODO: Steve have a look here:- this is how I'm filtering the list, is this good?*/
+        //console.log(data);
         var items = [];
         $.each(data, function (key, val) {
-            items.push(val)
+            if(filters_data(data,key)) {
+                items.push(val)
+            }
         });
 
+        function filters_data(data, key) {
+            if(data[key]['pubType'] == pub_type && data[key]['budget'] == pub_budget) {
+                return true;
+            }
+        }
+
         $.each(items, function (count){
-            var card = 
+            var card =
                 "<div class='card' style='-webkit-transform: translateZ(0);'>" +
                     "<div class='-close'></div>" +
                     "<div class='-thumbnail bg-cover-center'></div>" +
@@ -83,7 +110,8 @@ $(document).on('click', '#search', function (e) {
                         "</div>" +
                     "</div>" +
                 "</div>";
-            $('#listing-panel').append(card);
+            //Just appends it to the body for now
+            $('body').append(card);
         });
     });
 });

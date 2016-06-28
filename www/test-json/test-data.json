@@ -9,7 +9,8 @@
     "postCode": "NA",
     "townCity": "some town or city"
   },
-  "pubType": "WATCH_THE_FOOTBALL"
+  "pubType": "WATCH_THE_FOOTBALL",
+  "budget": "PUB_BUDGET_LOW"
 }, {
   "id": 2,
   "name": "McManus's",
@@ -21,7 +22,8 @@
     "postCode": "NA",
     "townCity": "some town or city"
   },
-  "pubType": "AFTER_WORK_DRINKS"
+  "pubType": "AFTER_WORK_DRINKS",
+  "budget": "PUB_BUDGET_HIGH"
 }, {
   "id": 3,
   "name": "The Spirit Store",
