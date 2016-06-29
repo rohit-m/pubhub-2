@@ -35,7 +35,8 @@
     "postCode": "NA",
     "townCity": "some town or city"
   },
-  "pubType": "AFTER_WORK_DRINKS"
+  "pubType": "AFTER_WORK_DRINKS",
+  "budget": "PUB_BUDGET_MED"
 }, {
   "id": 4,
   "name": "Courtneys",
@@ -47,7 +48,8 @@
     "postCode": "NA",
     "townCity": "some town or city"
   },
-  "pubType": "DATE_NIGHT"
+  "pubType": "DATE_NIGHT",
+  "budget": "PUB_BUDGET_LOW"
 }, {
   "id": 5,
   "name": "Pepper Saint Ontiod",
@@ -59,7 +61,8 @@
     "postCode": "NA",
     "townCity": "some town or city"
   },
-  "pubType": "AFTER_WORK_DRINKS"
+  "pubType": "AFTER_WORK_DRINKS",
+  "budget": "PUB_BUDGET_MED"
 }, {
   "id": 6,
   "name": "The Alexandra",
@@ -71,7 +74,8 @@
     "postCode": "NA",
     "townCity": "some town or city"
   },
-  "pubType": "WATCH_THE_FOOTBALL"
+  "pubType": "WATCH_THE_FOOTBALL",
+  "budget": "PUB_BUDGET_HIGH"
 }, {
   "id": 7,
   "name": "Waxy O'Connors",
@@ -83,5 +87,6 @@
     "postCode": "NA",
     "townCity": "some town or city"
   },
-  "pubType": "WATCH_THE_FOOTBALL"
+  "pubType": "WATCH_THE_FOOTBALL",
+  "budget": "PUB_BUDGET_LOW"
 }]

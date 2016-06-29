@@ -45,6 +45,8 @@ app.initialize();
 
 //When you click search
 $(document).on('submit', '#filters', function (e) {
+    $('#temp > *').remove();
+
     var form_values = $(this).serializeArray();
     var pub_budget, pub_type, form_data;
     e.preventDefault();
@@ -92,7 +94,7 @@ $(document).on('submit', '#filters', function (e) {
                     "<div class='meta'>" +
                         "<div class='-distance'>5 <span class='measure'>mins</span></div>" +
                         "<div class='-name'>"+ items[count]['name'] +"</div>" +
-                        "<div class='-tags'>"+ items[count]['pubType'] +"</div>" +
+                        "<div class='-tags'>"+ items[count]['pubType'] + items[count]['budget'] +"</div>" +
                         "<div class='-share'></div>" +
                     "</div>" +
                     "<div class='offers-list list padding-small'><h3>Offers</h3><ul class='offer-list-ul'><li>STATIC ITEM</li><li>STATIC ITEM</li></ul></div>" +
@@ -111,8 +113,11 @@ $(document).on('submit', '#filters', function (e) {
                     "</div>" +
                 "</div>";
             //Just appends it to the body for now
-            $('body').append(card);
+            $('#temp').append(card);
         });
+        if(items.length == 0) {
+            $('#temp').append("<h1>Sorry no results found</h1>");
+        }
     });
 });
 
